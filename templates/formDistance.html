@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% import "_macros.html" as macros %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDISTANCIA ENTRE DOS PUNTOS</title>
+</head>
+<body>
+    <h1>DISTANCIA ENTRE DOS PUNTOS</h1>
+
+    <form method="post">
+        <label for="x1">Coordenada X1</label>
+        <input type="number" name="x1" required>
+
+        <label for="y1">Coordenada Y1:</label>
+        <input type="number" name="y1" required>
+
+        <br>
+
+        <label for="x2">Coordenada X2:</label>
+        <input type="number" name="x2" required>
+
+        <label for="y2">Coordenada Y2:</label>
+        <input type="number" name="y2" required>
+
+        <br>
+
+        <input type="submit" value="Calcular Distancia">
+    </form>
+
+    {% if distance is not none %}
+        <p>La distancia entre los dos puntos es: {{ distance }}</p>
+    {% endif %}
+    
+</body>
+     {% endblock %}
+</html>
