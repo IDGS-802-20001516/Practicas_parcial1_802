@@ -1,4 +1,5 @@
 from flask import Flask, request,render_template
+
 app=Flask(__name__)
 
 @app.route("/")
@@ -30,5 +31,20 @@ def multiplica():
 
     return render_template('formulario.html', result=None)
 
+@app.route('/formDistance', methods=['GET', 'POST'])
+def d2p():
+    d = None
+
+    if request.method == 'POST':
+        x1 = float(request.form['x1'])
+        y1 = float(request.form['y1'])
+        x2 = float(request.form['x2'])
+        y2 = float(request.form['y2'])
+        d = ((x2 - x1) ** 2 + (y2 - y1) ** 2) ** 0.5
+
+    return render_template('formDistance.html', distance=d)
+
+
+  
 if __name__ == "__main__":
     app.run(debug=True)
