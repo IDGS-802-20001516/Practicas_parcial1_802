@@ -1,6 +1,6 @@
 
 from flask import Flask, request,render_template
-import resistencia
+import forms
 app=Flask(__name__)
 
 
@@ -33,7 +33,7 @@ def multiplica():
 
     return render_template('formulario.html', result=None)
 
-@app.route('/formDistance', methods=['GET', 'POST'])
+@app.route('/DistanciaDosPuntos', methods=['GET', 'POST'])
 def d2p():
     d = None
 
