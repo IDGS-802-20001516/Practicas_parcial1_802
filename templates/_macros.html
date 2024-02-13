@@ -1,10 +1,40 @@
-{% macro datos (name, placeholder, type="text")%}
-    <p>
-        <input placeholder="{{name}}" name="{{placeholder}}" type="{{type}}">
-    </p>
-{% endmacro %}
+{% macro render_input(name, placeholder, type="text") %}
 
-{% macro input_form(field) %}
-    <td>{{field.label}}</td>
-    <dd>{{field(**kwargs)|safe}}</dd>
-{% endmacro %}
+<div class="contol-group">
+    <label for="{{name}}" class="control-label">{{placeholder}}</label>
+    <div class="controls">
+        <input type="{{type}}" name="{{name}}" placeholder="placeholder" class="input-xlarge">
+    </div>
+</div>
+
+{%endmacro%}
+
+{% macro render_field(field) %}
+
+    <div class="control-group">
+        <div class="controls">
+            {{field.label}}
+            {{field(**kwargs)|safe}}
+        </div>
+    </div>
+    {% if field.errors %}
+    <ul>
+        {%for error in field.errors%}
+        <li style="color: red">
+            {{error}}
+        </li>
+        {%endfor%}
+    </ul>
+    {%endif%}
+{%endmacro%}
+
+{% macro render_field2(field) %}
+
+    <div class="control-group">
+        <div class="controls">
+            {{field.label}}
+            {{field(**kwargs)|safe}}
+        </div>
+    </div>
+
+{%endmacro%}
